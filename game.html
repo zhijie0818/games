@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Sidney Song"/>
+	<meta name="Copyright" content="Perfect World">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="http://www.mytvgame.com/static/mytvgame/common/css/reset.css">
+	<style type="text/css">
+		#test {margin: auto;margin-top: 50px;}
+		#test ul {position: relative;width: 1000px;height: 450px;overflow: hidden;margin: auto;}
+		#test ul li {position: absolute;top: 0;height: 450px;}
+		#test ul .item {width: 80px;z-index: 2;}
+		#test ul .item.cur {opacity: 0;z-index: 0;filter: alpha(opacity=0);}
+		#test ul .item2 {width: 600px;z-index: 1;}
+		#item2{background: #171c32;}
+		#item2.zuoji-cur {left: 400px;}
+		#item2.zhongzu-cur {left: 320px;}
+		#item2.paotuan-cur {left: 240px;}
+		#item2.mmoba-cur {left: 160px;}
+		#item2.huoban-cur {left: 80px;}
+		#item2.chengjian-cur {left: 0px;}
+		.chengjian .chengjian,.huoban .chengjian,.mmoba .chengjian,.paotuan .chengjian,.zhongzu .chengjian,.zuoji .chengjian {left: 0;}
+		.huoban .huoban,.mmoba .huoban,.paotuan .huoban,.zhongzu .huoban,.zuoji .huoban {left: 80px;}
+		.mmoba .mmoba,.paotuan .mmoba,.zhongzu .mmoba,.zuoji .mmoba {left: 160px;}
+		.paotuan .paotuan,.zhongzu .paotuan,.zuoji .paotuan {left: 240px;}
+		.zhongzu .zhongzu,.zuoji .zhongzu {left: 320px;}
+		.zuoji .zuoji {left: 400px;}
+		.chengjian .zuoji,.huoban .zuoji,.mmoba .zuoji,.paotuan .zuoji,.zhongzu .zuoji {left: 920px;}
+		.chengjian .zhongzu,.huoban .zhongzu,.mmoba .zhongzu,.paotuan .zhongzu {left: 840px;}
+		.chengjian .paotuan,.huoban .paotuan,.mmoba .paotuan {left: 760px;}
+		.chengjian .mmoba,.huoban .mmoba {left: 680px;}
+		.chengjian .huoban {left: 600px;}
+	</style>
+</head>
+<body>
+	<div id="test">
+		<ul class="zuoji">
+			<li class="item chengjian" flag="chengjian">
+				<img src="imgs/chengjian.jpg"></li>
+			<li class="item huoban" flag="huoban">
+				<img src="imgs/huoban.jpg"></li>
+			<li class="item mmoba" flag="mmoba">
+				<img src="imgs/mmoba.jpg"></li>
+			<li class="item paotuan" flag="paotuan">
+				<img src="imgs/paotuan.jpg"></li>
+			<li class="item zhongzu" flag="zhongzu">
+				<img src="imgs/zhongzu.jpg"></li>
+			<li class="item zuoji cur hide" flag="zuoji">
+				<img src="imgs/zuoji.jpg"></li>
+			<li id="item2" class="zuoji-cur">
+				<img src="imgs/zuoji_big.jpg">
+			</li>
+		</ul>
+	</div>
+<script type="text/javascript" src="http://www.mytvgame.com/static/mytvgame/common/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+	$('#test .item').hover(function(){
+		var index=$(this).attr('flag');
+		$('.cur').removeClass('cur').show();
+		$(this).addClass('cur').hide();
+		$('#test ul').removeClass().addClass(index);
+		$('#item2').removeClass().addClass(index+'-cur');
+		$('#item2 img').attr("src",'imgs/'+index+'_big.jpg');
+	})
+</script>
+</body>
+</html>
